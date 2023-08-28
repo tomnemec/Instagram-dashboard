@@ -1,0 +1,128 @@
+:root {
+  --primary-color: #25054d;
+  --card-color: #fffffffc;
+  --secondary-color: #f0f0f0;
+}
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  font-family: sans-serif;
+  background: var(--primary-color);
+}
+@property --p {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+.pie {
+  --p: 20;
+  --b: 22px;
+  --c: darkred;
+  --w: 150px;
+
+  width: var(--w);
+  aspect-ratio: 1;
+  position: relative;
+  display: inline-grid;
+  margin: 5px;
+  place-content: center;
+  font-size: 25px;
+  font-weight: bold;
+  background: white;
+}
+.frame {
+  background: var(--card-color);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 210px;
+  height: 210px;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 8px 16px 0 rgb(45, 45, 48);
+}
+.frame h3 {
+  position: absolute;
+  top: -5px;
+}
+.card h3 {
+  position: absolute;
+  top: -5px;
+}
+.card {
+  background: var(--card-color);
+  position: relative;
+  width: 440px;
+  height: 250px;
+  box-shadow: 0 8px 16px 0 rgb(45, 45, 48);
+  border-radius: 15px;
+  display: flex;
+  align-items: end;
+  justify-content: space-evenly;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+}
+.stripe {
+  border-radius: 15px;
+  width: 30px;
+  height: var(--h);
+  background: var(--i);
+}
+.pie:before,
+.pie:after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+.pie:before {
+  inset: 0;
+  background: radial-gradient(farthest-side, var(--c) 98%, #0000) top/var(--b)
+      var(--b) no-repeat,
+    conic-gradient(var(--c) calc(var(--p) * 1%), #0000 0);
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    #0000 calc(99% - var(--b)),
+    #000 calc(100% - var(--b))
+  );
+  mask: radial-gradient(
+    farthest-side,
+    #0000 calc(99% - var(--b)),
+    #000 calc(100% - var(--b))
+  );
+}
+.pie:after {
+  inset: calc(50% - var(--b) / 2);
+  background: var(--c);
+  transform: rotate(calc(var(--p) * 3.6deg))
+    translateY(calc(50% - var(--w) / 2));
+}
+.animate {
+  animation: p 1s 0.5s both;
+}
+.stripeAnimate {
+  animation: stripeAnim 1s 0.5s both;
+}
+.no-round:before {
+  background-size: 0 0, auto;
+}
+.no-round:after {
+  content: none;
+}
+@keyframes p {
+  from {
+    --p: 0;
+  }
+}
+@keyframes stripeAnim {
+  from {
+    height: 0;
+  }
+}
