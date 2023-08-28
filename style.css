@@ -11,7 +11,27 @@ body {
   align-items: center;
   gap: 15px;
   font-family: sans-serif;
-  background: var(--primary-color);
+  background: hsla(328, 75%, 45%, 1);
+
+  background: linear-gradient(
+    90deg,
+    hsla(328, 75%, 45%, 1) 0%,
+    hsla(269, 85%, 41%, 1) 100%
+  );
+
+  background: -moz-linear-gradient(
+    90deg,
+    hsla(328, 75%, 45%, 1) 0%,
+    hsla(269, 85%, 41%, 1) 100%
+  );
+
+  background: -webkit-linear-gradient(
+    90deg,
+    hsla(328, 75%, 45%, 1) 0%,
+    hsla(269, 85%, 41%, 1) 100%
+  );
+
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#C81D77", endColorstr="#6710C2", GradientType=1 );
 }
 @property --p {
   syntax: "<number>";
